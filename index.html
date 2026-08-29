@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chicken Noise</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="logo">Chicken Noise</h1>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <main class="grid" id="sound-grid">
+    <!-- sound cards injected by script.js -->
+  </main>
+
+  <button id="master-toggle" class="master-btn" aria-label="Play or stop all sounds">
+    <span id="master-icon">▶</span>
+    <span id="master-label">Play All</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
