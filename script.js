@@ -1,35 +1,20 @@
-const ICONS = {
-  rain: '<svg viewBox="0 0 24 24"><path d="M17 13a5 5 0 0 0-9.9-1A4.5 4.5 0 0 0 8 21h9a4 4 0 0 0 0-8h-.1"/><path d="M8 19v2"/><path d="M12 19v2"/><path d="M16 19v2"/></svg>',
-  thunder: '<svg viewBox="0 0 24 24"><path d="M17 13a5 5 0 0 0-9.9-1A4.5 4.5 0 0 0 8 21h9a4 4 0 0 0 0-8h-.1"/><path d="M13 14l-3 5h3l-2 4"/></svg>',
-  waves: '<svg viewBox="0 0 24 24"><path d="M2 8c1.5 1.5 3.5 1.5 5 0s3.5-1.5 5 0 3.5 1.5 5 0 3.5-1.5 5 0"/><path d="M2 14c1.5 1.5 3.5 1.5 5 0s3.5-1.5 5 0 3.5 1.5 5 0 3.5-1.5 5 0"/><path d="M2 20c1.5 1.5 3.5 1.5 5 0s3.5-1.5 5 0 3.5 1.5 5 0 3.5-1.5 5 0"/></svg>',
-  wind: '<svg viewBox="0 0 24 24"><path d="M2 9h11a3 3 0 1 0-3-3"/><path d="M2 15h15a3 3 0 1 1-3 3"/><path d="M2 12h7"/></svg>',
-  birds: '<svg viewBox="0 0 24 24"><path d="M4 12c1.5-2 3-2 4.5 0M13 12c1.5-2 3-2 4.5 0"/><path d="M18 8a3 3 0 0 1 3 3c0 1.5-1 2.5-2.5 2.8L17 16l-1-2.2c-1 .2-2 .2-3 0"/></svg>',
-  whiteNoise: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="11" stroke-dasharray="2 3"/></svg>',
-  ocean: '<svg viewBox="0 0 24 24"><path d="M12 2v6"/><path d="M9 5h6"/><circle cx="12" cy="8" r="1.5"/><path d="M12 9.5V19"/><path d="M6 13h12"/><path d="M4 19c1.2 1.3 2.8 1.3 4 0s2.8-1.3 4 0 2.8 1.3 4 0 2.8-1.3 4 0"/></svg>',
-  umbrella: '<svg viewBox="0 0 24 24"><path d="M12 12V20a2 2 0 0 1-4 0"/><path d="M2 12a10 10 0 0 1 20 0Z"/></svg>',
-  owl: null,
-  campfire: '<svg viewBox="0 0 24 24"><path d="M12 22c4-1 6-3.5 6-7 0-2-1-3.5-2-5 .3 2-.7 3-1.5 2.2C15 10.7 14 8 12 6c.5 2.5-.5 3.5-1.5 4.5C9 12 8 13.5 8 15c-3.5 0-4.5-3-4-5C2 12 2 15 2 15c0 4 3.5 7 6 7"/></svg>',
-  cavern: '<svg viewBox="0 0 24 24"><path d="M3 20l6-13 4 8 3-6 5 11z"/></svg>',
-  forest: '<svg viewBox="0 0 24 24"><path d="M12 2l5 8h-3l4 6h-3l3 6H6l3-6H6l4-6H7z"/><path d="M12 22v-4"/></svg>',
-  river: '<svg viewBox="0 0 24 24"><path d="M7 16a4 4 0 0 1 4-4 4 4 0 0 0 4-4 4 4 0 0 1 4-4"/><path d="M12 21c-3 0-5-2-5-5"/></svg>',
-};
-
 const SOUNDS = [
-  { id: "rain", label: "Rain", file: "rain.mp3", icon: ICONS.rain },
-  { id: "thunder", label: "Thunder", file: "thunder.mp3", icon: ICONS.thunder },
-  { id: "waves", label: "Waves", file: "waves.mp3", icon: ICONS.waves },
-  { id: "wind", label: "Wind", file: "wind.mp3", icon: ICONS.wind },
-  { id: "birds", label: "Birds", file: "birds.mp3", icon: ICONS.birds },
-  { id: "white-noise", label: "White Noise", file: "white-noise.mp3", icon: ICONS.whiteNoise },
-  { id: "ocean", label: "Ocean", file: "ocean.mp3", icon: ICONS.ocean },
-  { id: "umbrella", label: "Umbrella", file: "umbrella.mp3", icon: ICONS.umbrella },
+  { id: "rain", label: "Rain", file: "rain.mp3", emoji: "🌧️" },
+  { id: "thunder", label: "Thunder", file: "thunder.mp3", emoji: "⛈️" },
+  { id: "waves", label: "Waves", file: "waves.mp3", emoji: "🌊" },
+  { id: "wind", label: "Wind", file: "wind.mp3", emoji: "💨" },
+  { id: "birds", label: "Birds", file: "birds.mp3", emoji: "🐦" },
+  { id: "white-noise", label: "White Noise", file: "white-noise.mp3", emoji: "📺" },
+  { id: "ocean", label: "Ocean", file: "ocean.mp3", emoji: "⚓" },
+  { id: "umbrella", label: "Umbrella", file: "umbrella.mp3", emoji: "☂️" },
   { id: "owl", label: "Owl", file: "owl.mp3", emoji: "🦉" },
-  { id: "campfire", label: "Campfire", file: "campfire.mp3", icon: ICONS.campfire },
-  { id: "cavern", label: "Cavern", file: "cavern.mp3", icon: ICONS.cavern },
-  { id: "forest", label: "Forest", file: "forest.mp3", icon: ICONS.forest },
-  { id: "river", label: "River", file: "river.mp3", icon: ICONS.river },
+  { id: "campfire", label: "Campfire", file: "campfire.mp3", emoji: "🔥" },
+  { id: "cavern", label: "Cavern", file: "cavern.mp3", emoji: "🦇" },
+  { id: "forest", label: "Forest", file: "forest.mp3", emoji: "🌲" },
+  { id: "river", label: "River", file: "river.mp3", emoji: "🏞️" },
 ];
 
+const RANDOMIZE_VOLUME = 20;
 const STORAGE_KEY = "chicken-noise-volumes";
 const THEME_KEY = "chicken-noise-theme";
 
@@ -60,8 +45,8 @@ SOUNDS.forEach((sound) => {
   card.dataset.id = sound.id;
 
   const iconWrap = document.createElement("div");
-  iconWrap.className = sound.emoji ? "card-icon emoji" : "card-icon";
-  iconWrap.innerHTML = sound.emoji || sound.icon;
+  iconWrap.className = "card-icon emoji";
+  iconWrap.textContent = sound.emoji;
 
   const percent = document.createElement("div");
   percent.className = "card-percent";
@@ -97,8 +82,6 @@ SOUNDS.forEach((sound) => {
     console.warn(`Missing audio file: audio/${sound.file}. Add your mp3 to the audio/ folder.`);
   });
 
-  players[sound.id] = { audio, slider, card };
-
   if (initialVolume > 0) {
     card.classList.add("active");
     percent.textContent = `${initialVolume}%`;
@@ -106,6 +89,7 @@ SOUNDS.forEach((sound) => {
 
   const applyVolume = (value) => {
     const volume = Number(value);
+    slider.value = String(volume);
     slider.style.setProperty("--fill", `${volume}%`);
     audio.volume = volume / 100;
 
@@ -122,49 +106,31 @@ SOUNDS.forEach((sound) => {
     const volumes = loadVolumes();
     volumes[sound.id] = volume;
     saveVolumes(volumes);
-    updateMasterButton();
   };
+
+  players[sound.id] = { applyVolume };
 
   slider.addEventListener("input", (e) => applyVolume(e.target.value));
 
   card.addEventListener("click", (e) => {
     if (e.target === slider) return;
     const isActive = Number(slider.value) > 0;
-    slider.value = isActive ? "0" : "20";
-    applyVolume(slider.value);
+    applyVolume(isActive ? 0 : RANDOMIZE_VOLUME);
   });
 });
 
-const masterBtn = document.getElementById("master-toggle");
-const masterIcon = document.getElementById("master-icon");
-const masterLabel = document.getElementById("master-label");
+const randomizeBtn = document.getElementById("randomize-btn");
 
-function anyPlaying() {
-  return Object.values(players).some((p) => !p.audio.paused);
-}
-
-function updateMasterButton() {
-  if (anyPlaying()) {
-    masterIcon.textContent = "■";
-    masterLabel.textContent = "Stop All";
-  } else {
-    masterIcon.textContent = "▶";
-    masterLabel.textContent = "Play All";
+randomizeBtn.addEventListener("click", () => {
+  const picks = SOUNDS.map(() => Math.random() < 0.5);
+  if (!picks.some(Boolean)) {
+    picks[Math.floor(Math.random() * picks.length)] = true;
   }
-}
 
-masterBtn.addEventListener("click", () => {
-  if (anyPlaying()) {
-    Object.values(players).forEach((p) => p.audio.pause());
-  } else {
-    Object.values(players).forEach((p) => {
-      if (Number(p.slider.value) > 0) p.audio.play().catch(() => {});
-    });
-  }
-  updateMasterButton();
+  SOUNDS.forEach((sound, i) => {
+    players[sound.id].applyVolume(picks[i] ? RANDOMIZE_VOLUME : 0);
+  });
 });
-
-updateMasterButton();
 
 const themeToggle = document.getElementById("theme-toggle");
 
