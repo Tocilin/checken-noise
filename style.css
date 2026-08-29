@@ -202,6 +202,7 @@ body {
 }
 
 .slider {
+  display: none;
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -210,6 +211,10 @@ body {
   border-radius: 999px;
   outline: none;
   cursor: pointer;
+}
+
+.card.active .slider {
+  display: block;
 }
 
 .slider::-webkit-slider-thumb {
