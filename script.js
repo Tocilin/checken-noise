@@ -14,12 +14,24 @@ const SOUNDS = [
   { id: "river", label: "River", file: "river.mp3", emoji: "🏞️" },
 ];
 
+const PRESETS = [
+  { name: "Soft Rain", sounds: { rain: 70, thunder: 10 } },
+  { name: "Thunderstorm", sounds: { rain: 100, thunder: 90, wind: 60 } },
+];
+
 const RANDOMIZE_VOLUME = 20;
 const STORAGE_KEY = "chicken-noise-volumes";
 const THEME_KEY = "chicken-noise-theme";
 
 const grid = document.getElementById("sound-grid");
+const presetsBar = document.getElementById("presets-bar");
+const shuffleBtn = document.getElementById("shuffle-btn");
+const stopAllBtn = document.getElementById("stop-all-btn");
 const players = {};
+
+function updateStopAllVisibility() {
+  stopAllBtn.hidden = grid.querySelectorAll(".card.active").length === 0;
+}
 
 function loadVolumes() {
   try {
@@ -106,6 +118,7 @@ SOUNDS.forEach((sound) => {
     const volumes = loadVolumes();
     volumes[sound.id] = volume;
     saveVolumes(volumes);
+    updateStopAllVisibility();
   };
 
   players[sound.id] = { applyVolume };
@@ -119,9 +132,22 @@ SOUNDS.forEach((sound) => {
   });
 });
 
-const randomizeBtn = document.getElementById("randomize-btn");
+function applyPreset(preset) {
+  SOUNDS.forEach((sound) => {
+    players[sound.id].applyVolume(preset.sounds[sound.id] ?? 0);
+  });
+}
 
-randomizeBtn.addEventListener("click", () => {
+PRESETS.forEach((preset) => {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "preset-btn";
+  btn.textContent = preset.name;
+  btn.addEventListener("click", () => applyPreset(preset));
+  presetsBar.insertBefore(btn, shuffleBtn);
+});
+
+shuffleBtn.addEventListener("click", () => {
   const picks = SOUNDS.map(() => Math.random() < 0.5);
   if (!picks.some(Boolean)) {
     picks[Math.floor(Math.random() * picks.length)] = true;
@@ -131,6 +157,12 @@ randomizeBtn.addEventListener("click", () => {
     players[sound.id].applyVolume(picks[i] ? RANDOMIZE_VOLUME : 0);
   });
 });
+
+stopAllBtn.addEventListener("click", () => {
+  SOUNDS.forEach((sound) => players[sound.id].applyVolume(0));
+});
+
+updateStopAllVisibility();
 
 const themeToggle = document.getElementById("theme-toggle");
 

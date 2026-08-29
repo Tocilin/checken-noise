@@ -16,14 +16,19 @@
     </button>
   </header>
 
+  <div class="presets" id="presets-bar">
+    <!-- preset buttons injected by script.js -->
+    <button id="shuffle-btn" class="preset-btn preset-shuffle" aria-label="Shuffle random sounds on">
+      <span>🎲</span> Shuffle
+    </button>
+    <button id="stop-all-btn" class="preset-btn preset-stop-all" aria-label="Stop all sounds" hidden>
+      <span>■</span> Stop All
+    </button>
+  </div>
+
   <main class="grid" id="sound-grid">
     <!-- sound cards injected by script.js -->
   </main>
-
-  <button id="randomize-btn" class="master-btn" aria-label="Randomize active sounds">
-    <span>🎲</span>
-    <span>Randomize</span>
-  </button>
 
   <script src="script.js"></script>
 </body>
