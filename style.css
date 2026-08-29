@@ -111,6 +111,19 @@ body {
   gap: 14px;
 }
 
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-percent {
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
 .card-icon {
   width: 24px;
   height: 24px;

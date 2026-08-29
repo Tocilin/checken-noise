@@ -63,13 +63,20 @@ SOUNDS.forEach((sound) => {
   iconWrap.className = sound.emoji ? "card-icon emoji" : "card-icon";
   iconWrap.innerHTML = sound.emoji || sound.icon;
 
+  const percent = document.createElement("div");
+  percent.className = "card-percent";
+
+  const header = document.createElement("div");
+  header.className = "card-header";
+  header.append(iconWrap, percent);
+
   const label = document.createElement("div");
   label.className = "card-label";
   label.textContent = sound.label;
 
   const top = document.createElement("div");
   top.className = "card-top";
-  top.append(iconWrap, label);
+  top.append(header, label);
 
   const slider = document.createElement("input");
   slider.type = "range";
@@ -94,6 +101,7 @@ SOUNDS.forEach((sound) => {
 
   if (initialVolume > 0) {
     card.classList.add("active");
+    percent.textContent = `${initialVolume}%`;
   }
 
   const applyVolume = (value) => {
@@ -103,9 +111,11 @@ SOUNDS.forEach((sound) => {
 
     if (volume > 0) {
       card.classList.add("active");
+      percent.textContent = `${volume}%`;
       audio.play().catch(() => {});
     } else {
       card.classList.remove("active");
+      percent.textContent = "";
       audio.pause();
     }
 
@@ -120,7 +130,7 @@ SOUNDS.forEach((sound) => {
   card.addEventListener("click", (e) => {
     if (e.target === slider) return;
     const isActive = Number(slider.value) > 0;
-    slider.value = isActive ? "0" : "50";
+    slider.value = isActive ? "0" : "20";
     applyVolume(slider.value);
   });
 });
