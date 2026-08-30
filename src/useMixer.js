@@ -193,9 +193,15 @@ export function useMixer() {
     return {
       dark: Math.min(0.5, get("rain") * 0.22 + get("thunder") * 0.28 + get("cavern") * 0.3 + get("owl") * 0.18),
       tilt: mix.wind?.on ? -(3 + 3 * mix.wind.vol) : 0,
+      rain: get("rain"),
       thunder: mix.thunder?.on ? 0.5 + 0.5 * mix.thunder.vol : 0,
+      wind: mix.wind?.on ?? false,
+      birds: mix.birds?.on ?? false,
+      campfire: mix.campfire?.on ?? false,
+      owl: mix.owl?.on ?? false,
       umbrella: mix.umbrella?.on ?? false,
       forest: mix.forest?.on ?? false,
+      cavern: mix.cavern?.on ?? false,
     };
   }, [mix]);
 
