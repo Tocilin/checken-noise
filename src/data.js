@@ -15,14 +15,21 @@ export const SOUNDS = [
 ];
 
 export const PRESETS = [
-  { name: "Rainy nap", mix: { rain: 0.7, umbrella: 0.8, forest: 0.4 } },
-  { name: "Storm", mix: { rain: 0.9, thunder: 0.8, wind: 0.6, cavern: 0.5 } },
-  { name: "Campfire night", mix: { campfire: 0.85, forest: 0.5, owl: 0.6 } },
-  { name: "Ocean drift", mix: { ocean: 0.8, waves: 0.6, birds: 0.3 } },
-  { name: "Deep cavern", mix: { cavern: 0.9, river: 0.4, "white-noise": 0.25 } },
-  { name: "Morning forest", mix: { forest: 0.7, birds: 0.6, wind: 0.3 } },
-  { name: "Riverside", mix: { river: 0.75, forest: 0.45, waves: 0.3 } },
-  { name: "White room", mix: { "white-noise": 0.6 } },
+  { name: "Soft Rain", mix: { rain: 0.7, thunder: 0.1 } },
+  { name: "Thunderstorm", mix: { rain: 1.0, thunder: 0.9, wind: 0.6 } },
+  { name: "Beach Rain", mix: { rain: 0.6, waves: 0.8, wind: 0.2 } },
+  {
+    name: "Deep Forest Night",
+    mix: { rain: 0.2, wind: 0.2, "white-noise": 0.1, owl: 0.7, campfire: 0.3, forest: 0.8, river: 0.4 },
+  },
+  {
+    name: "Cozy Campfire",
+    mix: { rain: 0.1, wind: 0.1, campfire: 0.8, cavern: 0.2, owl: 0.5, river: 0.3 },
+  },
+  {
+    name: "Ocean Cavern",
+    mix: { ocean: 0.2, cavern: 0.4, wind: 0.2, "white-noise": 0.1, river: 0.9 },
+  },
 ];
 
 export const TIMERS = [15, 30, 60];
