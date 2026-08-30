@@ -1,20 +1,56 @@
 /**
- * Layered scene. Each layer below is a placeholder shape standing in for a
- * future hand-drawn asset. To swap a layer for real art:
- *   1. Generate a transparent-background PNG at the same canvas proportions
- *      as the others (see public/scene/README.md for the exact spec).
- *   2. Drop it in public/scene/<name>.png
- *   3. Replace that layer's placeholder markup below with
- *      <img className="layer-xxx" src="/scene/<name>.png" alt="" />
- * The positioning/animation classes in index.css don't need to change —
- * they already target the right layer names.
+ * Layered scene, built from real art extracted from the Figma composition.
+ * Trees and clouds are each a SINGLE source image (tree.png / cloud.png)
+ * repeated at different positions/sizes/opacity — not separate pictures —
+ * matching how they're built in Figma.
  */
+
+// left/top/width as % of the scene box; opacity for depth.
+const TREES = [
+  { left: 1, top: 26, width: 15, opacity: 1 },
+  { left: 9, top: 37, width: 11, opacity: 1 },
+  { left: 17, top: 41, width: 10, opacity: 1 },
+  { left: 23, top: 51, width: 7, opacity: 0.85 },
+  { left: 15, top: 49, width: 6.5, opacity: 0.85 },
+  { left: 63, top: 25, width: 17, opacity: 1 },
+  { left: 72, top: 25, width: 16, opacity: 1 },
+  { left: 56, top: 45, width: 9, opacity: 1 },
+  { left: 60, top: 38, width: 11, opacity: 1 },
+  { left: 84, top: 43, width: 9, opacity: 0.85 },
+  { left: 55, top: 56, width: 6.5, opacity: 0.85 },
+];
+
+const CLOUDS = [
+  { left: 12, top: 8, width: 17 },
+  { left: 62, top: 3, width: 17 },
+  { left: 47, top: 12, width: 9 },
+];
+
 export default function Scene({ layers, sceneLabel, chips, timerNote, showOverlays }) {
   return (
     <div className="scene">
       <Ground />
-      <Clouds />
-      <Forest />
+      <Horizon />
+      {TREES.map((t, i) => (
+        <img
+          key={i}
+          className="layer-tree"
+          src="/scene/tree.png"
+          alt=""
+          aria-hidden="true"
+          style={{ left: `${t.left}%`, top: `${t.top}%`, width: `${t.width}%`, opacity: t.opacity }}
+        />
+      ))}
+      {CLOUDS.map((c, i) => (
+        <img
+          key={i}
+          className="layer-cloud"
+          src="/scene/cloud.png"
+          alt=""
+          aria-hidden="true"
+          style={{ left: `${c.left}%`, top: `${c.top}%`, width: `${c.width}%` }}
+        />
+      ))}
       <Cave hasOwl={layers.owl} />
       {layers.campfire && <Campfire />}
       <Logs />
@@ -55,12 +91,8 @@ function Ground() {
   return <img className="layer-ground" src="/scene/ground-2.png" alt="" aria-hidden="true" />;
 }
 
-function Clouds() {
-  return <img className="layer-clouds" src="/scene/clouds.png" alt="" aria-hidden="true" />;
-}
-
-function Forest() {
-  return <img className="layer-forest" src="/scene/forest.png" alt="" aria-hidden="true" />;
+function Horizon() {
+  return <img className="layer-horizon" src="/scene/horizon.png" alt="" aria-hidden="true" />;
 }
 
 function Cave({ hasOwl }) {
