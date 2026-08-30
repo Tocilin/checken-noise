@@ -330,66 +330,52 @@ button {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 34%;
+  bottom: -2%;
+  width: 100%;
   z-index: 1;
-  background: #d9d2bc;
-  border-top: 1.5px solid var(--border);
+  object-fit: contain;
+  object-position: bottom;
+  pointer-events: none;
 }
 
 /* 6. CLOUDS */
 .layer-clouds {
   position: absolute;
-  left: 0;
-  top: 6%;
-  width: 100%;
-  height: 22%;
+  left: 4%;
+  top: 4%;
+  width: 62%;
   z-index: 1;
-}
-.cloud-shape {
-  fill: rgba(255, 255, 255, 0.55);
-  stroke: rgba(34, 32, 28, 0.25);
-  stroke-width: 1.2;
+  object-fit: contain;
+  object-position: top;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 /* 3. FOREST (trees) */
 .layer-forest {
   position: absolute;
-  left: 0;
-  bottom: 30%;
-  width: 100%;
-  height: 26%;
+  left: -2%;
+  bottom: 24%;
+  width: 104%;
   z-index: 2;
-}
-.tree-shape {
-  fill: #e2ddc9;
-  stroke: var(--ink);
-  stroke-width: 1.4;
-  opacity: 0.75;
+  object-fit: contain;
+  object-position: bottom;
+  pointer-events: none;
 }
 
 /* 2. CAVE (+ 14. OWL EYES) */
 .layer-cave {
   position: absolute;
-  right: 4%;
-  bottom: 20%;
-  width: 34%;
-  max-width: 220px;
-  aspect-ratio: 200 / 140;
+  right: 2%;
+  bottom: 22%;
+  width: 38%;
+  max-width: 240px;
   z-index: 3;
 }
-.layer-cave svg {
+.layer-cave img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-}
-.cave-rock {
-  fill: #cfc6ab;
-  stroke: var(--ink);
-  stroke-width: 2;
-}
-.cave-mouth {
-  fill: #2a2620;
 }
 .owl-eyes {
   position: absolute;
@@ -415,22 +401,19 @@ button {
 /* 5. LOGS (base) + 13. CAMPFIRE */
 .layer-logs {
   position: absolute;
-  left: 15%;
-  bottom: 21%;
-  width: 22%;
-  max-width: 130px;
+  left: 12%;
+  bottom: 20%;
+  width: 20%;
+  max-width: 140px;
   z-index: 3;
-}
-.log-shape rect {
-  fill: #a9805a;
-  stroke: var(--ink);
-  stroke-width: 1.5;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 .layer-campfire {
   position: absolute;
-  left: 26%;
-  bottom: 27%;
+  left: 22%;
+  bottom: 26%;
   translate: -50% 0;
   width: 10%;
   max-width: 60px;
@@ -486,50 +469,10 @@ button {
 }
 
 .chicken-art {
-  width: 170px;
-  height: 170px;
+  width: 190px;
+  height: auto;
   display: block;
-}
-
-.chicken-shadow {
-  fill: rgba(34, 32, 28, 0.15);
-}
-
-.chicken-body {
-  fill: #fdfcf6;
-  stroke: var(--ink);
-  stroke-width: 2.5;
-}
-
-.chicken-wing {
-  fill: #ece6d3;
-  stroke: var(--ink);
-  stroke-width: 2;
-}
-
-.chicken-comb {
-  fill: var(--accent);
-  stroke: var(--ink);
-  stroke-width: 2;
-}
-
-.chicken-beak {
-  fill: #e8963c;
-  stroke: var(--ink);
-  stroke-width: 2;
-}
-
-.chicken-eye {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 3;
-  stroke-linecap: round;
-}
-
-.chicken-foot {
-  fill: #e8963c;
-  stroke: var(--ink);
-  stroke-width: 2;
+  filter: drop-shadow(0 6px 6px rgba(34, 32, 28, 0.22));
 }
 
 .umbrella-art {

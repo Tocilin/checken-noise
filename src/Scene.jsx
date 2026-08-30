@@ -52,48 +52,21 @@ export default function Scene({ layers, sceneLabel, chips, timerNote, showOverla
 }
 
 function Ground() {
-  return <div className="layer-ground" aria-hidden="true" />;
+  return <img className="layer-ground" src="/scene/ground-2.png" alt="" aria-hidden="true" />;
 }
 
 function Clouds() {
-  return (
-    <svg className="layer-clouds" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true">
-      <g className="cloud-shape">
-        <ellipse cx="60" cy="30" rx="30" ry="14" />
-        <ellipse cx="88" cy="24" rx="20" ry="11" />
-      </g>
-      <g className="cloud-shape">
-        <ellipse cx="290" cy="18" rx="24" ry="10" />
-        <ellipse cx="312" cy="24" rx="16" ry="9" />
-      </g>
-    </svg>
-  );
+  return <img className="layer-clouds" src="/scene/clouds.png" alt="" aria-hidden="true" />;
 }
 
 function Forest() {
-  return (
-    <svg className="layer-forest" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true">
-      {[20, 55, 90, 300, 335, 370].map((x, i) => (
-        <path
-          key={i}
-          d={`M${x} 120 L${x - 16} 60 L${x - 6} 60 L${x - 20} 20 L${x} 34 L${x + 20} 20 L${x + 6} 60 L${x + 16} 60 Z`}
-          className="tree-shape"
-        />
-      ))}
-    </svg>
-  );
+  return <img className="layer-forest" src="/scene/forest.png" alt="" aria-hidden="true" />;
 }
 
 function Cave({ hasOwl }) {
   return (
     <div className="layer-cave">
-      <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-        <path
-          d="M20 160 L20 90 Q20 20 100 20 Q180 20 180 90 L180 160 Z"
-          className="cave-rock"
-        />
-        <path d="M55 160 L55 95 Q55 45 100 45 Q145 45 145 95 L145 160 Z" className="cave-mouth" />
-      </svg>
+      <img src="/scene/cave.png" alt="" aria-hidden="true" />
       {hasOwl && (
         <div className="owl-eyes" aria-hidden="true">
           <span className="owl-eye" />
@@ -105,14 +78,7 @@ function Cave({ hasOwl }) {
 }
 
 function Logs() {
-  return (
-    <svg className="layer-logs" viewBox="0 0 120 50" aria-hidden="true">
-      <g className="log-shape">
-        <rect x="4" y="26" width="90" height="16" rx="8" />
-        <rect x="18" y="10" width="90" height="16" rx="8" transform="rotate(-4 18 10)" />
-      </g>
-    </svg>
-  );
+  return <img className="layer-logs" src="/scene/logs.png" alt="" aria-hidden="true" />;
 }
 
 function Campfire() {
@@ -186,20 +152,7 @@ function Chicken({ umbrella }) {
           <path d="M80 100 q10 8 16 0" className="umbrella-handle" />
         </svg>
       )}
-      <svg viewBox="0 0 200 200" className="chicken-art" aria-label="A sleepy chicken">
-        <ellipse cx="100" cy="185" rx="46" ry="8" className="chicken-shadow" />
-        <path
-          d="M60 150 Q50 90 100 75 Q150 90 140 150 Q140 178 100 180 Q60 178 60 150 Z"
-          className="chicken-body"
-        />
-        <path d="M62 120 Q40 128 46 155 Q58 158 66 140 Z" className="chicken-wing" />
-        <path d="M84 78 Q100 58 116 78 Q112 92 100 92 Q88 92 84 78 Z" className="chicken-comb" />
-        <path d="M96 96 Q100 108 108 100 Z" className="chicken-beak" />
-        <path d="M84 96 q6 6 12 0" className="chicken-eye" />
-        <path d="M104 96 q6 6 12 0" className="chicken-eye" />
-        <path d="M84 172 l-6 10 l10 -2 Z" className="chicken-foot" />
-        <path d="M116 172 l6 10 l-10 -2 Z" className="chicken-foot" />
-      </svg>
+      <img className="chicken-art" src="/scene/chicken.png" alt="A sleepy chicken" />
     </div>
   );
 }
