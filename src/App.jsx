@@ -59,7 +59,6 @@ export default function App() {
               </button>
             ))}
           </div>
-          <div className="sounds-header mono muted eyebrow">Sounds — click where you want the volume</div>
           <div className="sounds-list">
             {m.items.map((item) => (
               <SoundRow key={item.key} item={item} />
