@@ -1,13 +1,13 @@
 :root {
-  --page: #e6e1d4;
-  --panel: #f7f4ea;
-  --row: #f2eddd;
-  --row-hover: #efe9d8;
-  --accent: #f5c842;
-  --ink: #22201c;
-  --ink-muted: rgba(34, 32, 28, 0.55);
-  --ink-faint: rgba(34, 32, 28, 0.28);
-  --border: rgba(34, 32, 28, 0.16);
+  --page: #e8e8e8;
+  --panel: #fafafa;
+  --row: #f0f0f0;
+  --row-hover: #e9e9e9;
+  --accent: #ffcc00;
+  --ink: #1a1a1a;
+  --ink-muted: rgba(26, 26, 26, 0.55);
+  --ink-faint: rgba(26, 26, 26, 0.28);
+  --border: rgba(26, 26, 26, 0.16);
   --radius-panel: 18px 21px 18px 20px;
   --radius-mobile: 34px;
 }
@@ -64,7 +64,7 @@ button {
   background: var(--panel);
   border: 1.5px solid var(--ink);
   border-radius: 18px 20px 18px 21px;
-  box-shadow: 0 18px 40px -26px rgba(34, 32, 28, 0.5);
+  box-shadow: 0 18px 40px -26px rgba(26, 26, 26, 0.5);
 }
 
 .topbar-left {
@@ -134,7 +134,7 @@ button {
   border: 1.5px solid var(--ink);
   border-radius: var(--radius-panel);
   overflow: hidden;
-  box-shadow: 0 18px 40px -26px rgba(34, 32, 28, 0.5);
+  box-shadow: 0 18px 40px -26px rgba(26, 26, 26, 0.5);
 }
 
 .scene-pane {
@@ -204,13 +204,6 @@ button {
 
 .preset-chip.active {
   background: var(--accent);
-}
-
-.sounds-header {
-  padding: 0 18px 8px;
-  border-top: 1.5px solid var(--border);
-  padding-top: 11px;
-  margin: 0 18px;
 }
 
 .sounds-list {
@@ -286,7 +279,15 @@ button {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, #eee9da 0%, #e6e0cf 70%, #ded7c2 100%);
+  background: var(--panel);
+}
+
+.scene-static-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .scene-label {
@@ -318,7 +319,7 @@ button {
   padding: 4px 9px;
   border: 1.5px solid var(--ink);
   border-radius: 20px;
-  background: rgba(247, 244, 234, 0.86);
+  background: rgba(250, 250, 250, 0.86);
 }
 
 .scene-timer-note {
@@ -331,287 +332,6 @@ button {
   color: var(--ink-muted);
 }
 
-/* 4. GROUND (base) */
-.layer-ground {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -2%;
-  width: 100%;
-  z-index: 1;
-  object-fit: contain;
-  object-position: bottom;
-  pointer-events: none;
-}
-
-/* 6. CLOUDS — single cloud.png, repeated */
-.layer-cloud {
-  position: absolute;
-  z-index: 1;
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-/* 3. FOREST — single tree.png, repeated at varied size/opacity */
-.layer-tree {
-  position: absolute;
-  z-index: 2;
-  transform-origin: bottom center;
-  pointer-events: none;
-}
-
-/* horizon line behind the trees on the left */
-.layer-horizon {
-  position: absolute;
-  left: 0%;
-  bottom: 22%;
-  width: 42%;
-  z-index: 1;
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-/* 2. CAVE (+ 14. OWL EYES) */
-.layer-cave {
-  position: absolute;
-  right: 2%;
-  bottom: 22%;
-  width: 38%;
-  max-width: 240px;
-  z-index: 3;
-}
-.layer-cave img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.owl-eyes {
-  position: absolute;
-  left: 50%;
-  bottom: 30%;
-  translate: -50% 0;
-  display: flex;
-  gap: 10px;
-  animation: owl-blink 3.6s ease-in-out infinite;
-}
-.owl-eye {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 6px 1px var(--accent);
-}
-@keyframes owl-blink {
-  0%, 92%, 100% { opacity: 1; transform: scaleY(1); }
-  95% { opacity: 0.3; transform: scaleY(0.15); }
-}
-
-/* 5. LOGS (base) + 13. CAMPFIRE */
-.layer-logs {
-  position: absolute;
-  left: 12%;
-  bottom: 20%;
-  width: 20%;
-  max-width: 140px;
-  z-index: 3;
-  object-fit: contain;
-  pointer-events: none;
-}
-
-.layer-campfire {
-  position: absolute;
-  left: 22%;
-  bottom: 26%;
-  translate: -50% 0;
-  width: 10%;
-  max-width: 60px;
-  aspect-ratio: 1;
-  z-index: 4;
-}
-.flame {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 60%;
-  height: 80%;
-  translate: -50% 0;
-  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
-  background: radial-gradient(circle at 50% 70%, #ffd35c 0%, #f5a623 55%, #e8641c 100%);
-  transform-origin: bottom center;
-  animation: flicker 1.1s ease-in-out infinite;
-}
-.flame-2 {
-  width: 40%;
-  height: 55%;
-  background: radial-gradient(circle at 50% 70%, #fff2c2 0%, #ffcf4d 100%);
-  animation-duration: 0.8s;
-  animation-delay: -0.3s;
-}
-.flame-3 {
-  width: 70%;
-  height: 40%;
-  opacity: 0.7;
-  background: radial-gradient(circle at 50% 80%, #ffb238 0%, transparent 75%);
-  animation-duration: 1.4s;
-  animation-delay: -0.6s;
-}
-@keyframes flicker {
-  0%, 100% { transform: translate(-50%, 0) scale(1); }
-  30% { transform: translate(-52%, 0) scale(0.95, 1.05); }
-  60% { transform: translate(-48%, 0) scale(1.05, 0.92); }
-}
-
-/* 1. CHICKEN (main) + 12. UMBRELLA (open) */
-.scene-stage {
-  position: absolute;
-  left: 50%;
-  bottom: 16%;
-  transform-origin: bottom center;
-  translate: -50% 0;
-  z-index: 5;
-  transition: transform 0.4s ease;
-}
-
-.chicken-wrap {
-  position: relative;
-}
-
-.chicken-art {
-  width: 190px;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 6px 6px rgba(34, 32, 28, 0.22));
-}
-
-.umbrella-art {
-  position: absolute;
-  left: 50%;
-  bottom: 62%;
-  width: 130px;
-  height: 90px;
-  translate: -50% 0;
-  transform-origin: bottom center;
-  animation: umbrella-pop 0.35s ease-out;
-}
-.umbrella-canopy {
-  fill: var(--accent);
-  stroke: var(--ink);
-  stroke-width: 2;
-}
-.umbrella-rim {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 1.5;
-}
-.umbrella-pole,
-.umbrella-handle {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 2.5;
-}
-@keyframes umbrella-pop {
-  from { transform: scale(0.4) rotate(-8deg); opacity: 0; }
-  to { transform: scale(1) rotate(0deg); opacity: 1; }
-}
-
-/* 9. WIND (leaves & lines) */
-.layer-wind {
-  position: absolute;
-  inset: 0;
-  z-index: 6;
-  overflow: hidden;
-  pointer-events: none;
-}
-.wind-leaf {
-  position: absolute;
-  top: 20%;
-  left: -8%;
-  width: 9px;
-  height: 9px;
-  border-radius: 0 60% 0 60%;
-  background: rgba(163, 141, 66, 0.55);
-  animation: wind-drift 3.4s linear infinite;
-}
-.wind-leaf-0 { top: 22%; animation-delay: 0s; }
-.wind-leaf-1 { top: 42%; animation-delay: -1.1s; animation-duration: 2.8s; }
-.wind-leaf-2 { top: 60%; animation-delay: -2s; animation-duration: 3.9s; }
-.wind-leaf-3 { top: 32%; animation-delay: -0.5s; animation-duration: 3.1s; }
-@keyframes wind-drift {
-  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.6; }
-  100% { transform: translate(340px, 26px) rotate(220deg); opacity: 0; }
-}
-
-/* 10. BIRDS */
-.layer-birds {
-  position: absolute;
-  left: 0;
-  top: 8%;
-  width: 55%;
-  height: 20%;
-  z-index: 6;
-  animation: birds-drift 8s linear infinite;
-}
-.bird-shape {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-@keyframes birds-drift {
-  0% { transform: translateX(-10%); }
-  100% { transform: translateX(20%); }
-}
-
-/* 7. RAIN */
-.layer-rain {
-  position: absolute;
-  inset: 0;
-  z-index: 7;
-  overflow: hidden;
-  pointer-events: none;
-}
-.raindrop {
-  position: absolute;
-  top: -10%;
-  width: 2px;
-  height: 16%;
-  background: linear-gradient(180deg, transparent, rgba(90, 120, 150, 0.55));
-  animation-name: rain-fall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-@keyframes rain-fall {
-  0% { transform: translateY(-20%); }
-  100% { transform: translateY(650%); }
-}
-
-/* 8. THUNDER (lightning) */
-.scene-tint {
-  position: absolute;
-  inset: 0;
-  background: var(--ink);
-  transition: opacity 0.3s ease;
-  z-index: 8;
-  pointer-events: none;
-}
-
-.scene-thunder {
-  position: absolute;
-  inset: 0;
-  background: #fffef2;
-  z-index: 9;
-  pointer-events: none;
-  animation: flash 2.4s ease-in-out infinite;
-}
-
-@keyframes flash {
-  0%, 88%, 100% { opacity: 0; }
-  90% { opacity: var(--flash-peak, 0.4); }
-  92% { opacity: 0.05; }
-  94% { opacity: var(--flash-peak, 0.4); }
-}
 
 /* ---------- Mobile card ---------- */
 
@@ -624,7 +344,7 @@ button {
   border: 1.5px solid var(--ink);
   border-radius: var(--radius-mobile);
   overflow: hidden;
-  box-shadow: 0 18px 40px -26px rgba(34, 32, 28, 0.5);
+  box-shadow: 0 18px 40px -26px rgba(26, 26, 26, 0.5);
 }
 
 .mobile-topbar {
