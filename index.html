@@ -4,32 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Chicken Noise</title>
-<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="topbar">
-    <h1 class="logo">Chicken Noise</h1>
-    <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
-      </svg>
-    </button>
-  </header>
-
-  <div class="presets" id="presets-bar">
-    <!-- preset buttons injected by script.js -->
-    <button id="shuffle-btn" class="preset-btn preset-shuffle" aria-label="Shuffle random sounds on">
-      <span>🎲</span> Shuffle
-    </button>
-    <button id="stop-all-btn" class="preset-btn preset-stop-all" aria-label="Stop all sounds" hidden>
-      <span>■</span> Stop All
-    </button>
-  </div>
-
-  <main class="grid" id="sound-grid">
-    <!-- sound cards injected by script.js -->
-  </main>
-
-  <script src="script.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

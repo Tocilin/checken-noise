@@ -1,45 +1,28 @@
 # Chicken Noise
 
-A minimalist ambient sound mixer. Play and blend rain, thunder, waves, wind, birds, white noise, ocean, umbrella, owl, campfire, cavern, forest, and river sounds, each with its own volume slider. No login, no build step.
+An ambient sound mixer: click a sound row where you want the volume, drag to fine-tune, mix as many of the 13 layers as you like. Built with React + Vite.
 
 ## Running locally
 
-Any static file server works, e.g.:
-
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8000`.
+Then open the printed local URL. `npm run build` produces a static `dist/` you can deploy anywhere.
 
-(Opening `index.html` directly as a `file://` URL also works in most browsers, though some enforce autoplay/CORS restrictions more strictly for local files.)
+## Sound files
 
-## Adding your sound files
+The 13 mp3s live in `public/audio/` and are already included:
 
-Drop your mp3 files into the `audio/` folder using these exact filenames:
-
-| Sound        | Filename           |
-|--------------|---------------------|
-| Rain         | `audio/rain.mp3`         |
-| Thunder      | `audio/thunder.mp3`      |
-| Waves        | `audio/waves.mp3`        |
-| Wind         | `audio/wind.mp3`         |
-| Birds        | `audio/birds.mp3`        |
-| White Noise  | `audio/white-noise.mp3`  |
-| Ocean        | `audio/ocean.mp3`        |
-| Umbrella     | `audio/umbrella.mp3`     |
-| Owl          | `audio/owl.mp3`          |
-| Campfire     | `audio/campfire.mp3`     |
-| Cavern       | `audio/cavern.mp3`       |
-| Forest       | `audio/forest.mp3`       |
-| River        | `audio/river.mp3`        |
-
-Until a file is present, its card still works in the UI but will silently fail to play (check the browser console for a warning).
+rain, thunder, waves, wind, birds, white-noise, ocean, umbrella, owl, campfire, cavern, forest, river.
 
 ## Features
 
-- Play any single sound, or mix several at once — each has its own volume slider.
-- Click a card to quick toggle it on/off.
-- "Play All" / "Stop All" button controls every active sound at once.
-- Volume levels and dark mode preference persist in `localStorage`.
-- Responsive grid layout, works on desktop and mobile.
+- **Click-to-set volume** — click anywhere on a sound row and its volume jumps to that point; drag to adjust, release near zero to turn it off.
+- **Presets** — Rainy nap, Storm, Campfire night, Ocean drift, Deep cavern, Morning forest, Riverside, White room (edit `src/data.js` to add more).
+- **Sleep timer** — 15/30/60 minute countdown that stops all sounds when it hits zero.
+- **Share mix** — encodes the current mix into the URL and copies it to your clipboard; opening that link restores the exact mix.
+- **Stop all** — silences every sound in one click.
+- **Scene** — a chicken illustration with a reactive backdrop (darkens with rain/thunder/cavern/owl, tilts with wind). The chicken itself is currently static — interactivity is planned for later.
+- Responsive: a two-pane desktop layout and a stacked single-column mobile layout.
