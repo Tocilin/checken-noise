@@ -39,18 +39,43 @@ export function useMixer() {
   const [shareCopied, setShareCopied] = useState(false);
 
   const audioRefs = useRef(new Map());
+  const gainRefs = useRef(new Map());
+  const audioCtxRef = useRef(null);
   const dragRef = useRef(null);
+
+  // iOS Safari silently ignores <audio>.volume — it always plays at full
+  // system volume no matter what we set. Web Audio's GainNode is the only
+  // reliable way to control per-sound volume there, so every sound is
+  // routed through one instead of relying on the element's own volume.
+  const ensureAudioGraph = useCallback(() => {
+    if (audioCtxRef.current) return audioCtxRef.current;
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new Ctx();
+    audioCtxRef.current = ctx;
+    audioRefs.current.forEach((audio, key) => {
+      const source = ctx.createMediaElementSource(audio);
+      const gain = ctx.createGain();
+      gain.gain.value = mix[key]?.vol ?? 0.2;
+      source.connect(gain).connect(ctx.destination);
+      gainRefs.current.set(key, gain);
+    });
+    return ctx;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     SOUNDS.forEach((s) => {
       const audio = new Audio(`/audio/${s.key}.mp3`);
       audio.loop = true;
-      audio.volume = mix[s.key]?.vol ?? 0.2;
+      audio.volume = 1;
       audioRefs.current.set(s.key, audio);
     });
     return () => {
       audioRefs.current.forEach((audio) => audio.pause());
       audioRefs.current.clear();
+      gainRefs.current.clear();
+      audioCtxRef.current?.close();
+      audioCtxRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -59,8 +84,10 @@ export function useMixer() {
     Object.entries(mix).forEach(([key, s]) => {
       const audio = audioRefs.current.get(key);
       if (!audio) return;
-      audio.volume = s.vol;
+      const gain = gainRefs.current.get(key);
+      if (gain) gain.gain.value = s.vol;
       if (s.on && s.vol > 0) {
+        audioCtxRef.current?.resume();
         audio.play().catch(() => {});
       } else {
         audio.pause();
@@ -97,11 +124,12 @@ export function useMixer() {
   const grab = useCallback(
     (key) => (e) => {
       e.preventDefault();
+      ensureAudioGraph();
       const rect = e.currentTarget.getBoundingClientRect();
       dragRef.current = { key, rect };
       setVolAt(key, e.clientX, rect);
     },
-    [setVolAt]
+    [setVolAt, ensureAudioGraph]
   );
 
   useEffect(() => {
@@ -130,14 +158,18 @@ export function useMixer() {
     };
   }, [setVolAt]);
 
-  const applyPreset = useCallback((preset) => {
-    const m = blankMix();
-    Object.entries(preset.mix).forEach(([key, vol]) => {
-      m[key] = { on: true, vol };
-    });
-    setMix(m);
-    setActivePreset(preset.name);
-  }, []);
+  const applyPreset = useCallback(
+    (preset) => {
+      ensureAudioGraph();
+      const m = blankMix();
+      Object.entries(preset.mix).forEach(([key, vol]) => {
+        m[key] = { on: true, vol };
+      });
+      setMix(m);
+      setActivePreset(preset.name);
+    },
+    [ensureAudioGraph]
+  );
 
   const stopAll = useCallback(() => {
     setMix(blankMix());
