@@ -174,6 +174,8 @@ export function useMixer() {
   const stopAll = useCallback(() => {
     setMix(blankMix());
     setActivePreset(null);
+    setTimerMinutes(null);
+    setTimerEndAt(null);
   }, []);
 
   const toggleTimer = useCallback((minutes) => {
@@ -248,7 +250,14 @@ export function useMixer() {
     presets: PRESETS.map((p) => ({ ...p, active: activePreset === p.name })),
     applyPreset,
     stopAll,
-    timers: TIMERS.map((n) => ({ label: `${n}m`, minutes: n, active: timerMinutes === n })),
+    timers: TIMERS.map((n) => {
+      const isActive = timerMinutes === n;
+      const label =
+        isActive && timerRemaining !== null
+          ? `${Math.floor(timerRemaining / 60)}:${String(timerRemaining % 60).padStart(2, "0")}`
+          : `${n}m`;
+      return { label, minutes: n, active: isActive };
+    }),
     toggleTimer,
     timerNote,
     shareMix,
