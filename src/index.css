@@ -39,6 +39,7 @@ body {
 
 button {
   font-family: inherit;
+  color: inherit;
   cursor: pointer;
 }
 
@@ -164,6 +165,7 @@ button {
   border: 1.5px solid var(--ink);
   border-radius: 20px;
   background: var(--panel);
+  color: var(--ink);
   white-space: nowrap;
 }
 
@@ -192,6 +194,7 @@ button {
   border: 1.5px solid var(--ink);
   border-radius: 20px;
   background: var(--panel);
+  color: var(--ink);
   white-space: nowrap;
 }
 

@@ -77,6 +77,15 @@ export default function App() {
           <Scene layers={m.layers} sceneLabel={m.sceneLabel} chips={m.chips} timerNote={m.timerNote} showOverlays={false} />
         </div>
         <div className="mobile-presets-row">
+          {m.timers.map((t) => (
+            <button
+              key={t.label}
+              className={`chip-btn${t.active ? " active" : ""}`}
+              onClick={() => m.toggleTimer(t.minutes)}
+            >
+              {t.label}
+            </button>
+          ))}
           <button className="stop-all-btn" onClick={m.stopAll}>
             Stop all
           </button>
