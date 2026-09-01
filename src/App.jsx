@@ -98,7 +98,6 @@ export default function App() {
           ))}
         </div>
         <div className="mobile-sheet-header">
-          <span className="mono muted eyebrow">Sheet — tap where you want the volume</span>
           <span className="mono muted">{m.activeCount}/13</span>
         </div>
         <div className="sounds-list mobile-list">
