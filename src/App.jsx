@@ -36,6 +36,7 @@ export default function App() {
             sceneLabel={m.sceneLabel}
             chips={m.chips}
             timerNote={m.timerNote}
+            rain={m.layers.rain}
             showOverlays
           />
         </div>
@@ -72,7 +73,13 @@ export default function App() {
           <span className="mono muted">{m.timerNote}</span>
         </header>
         <div className="mobile-scene">
-          <Scene sceneLabel={m.sceneLabel} chips={m.chips} timerNote={m.timerNote} showOverlays={false} />
+          <Scene
+            sceneLabel={m.sceneLabel}
+            chips={m.chips}
+            timerNote={m.timerNote}
+            rain={m.layers.rain}
+            showOverlays={false}
+          />
         </div>
         <div className="mobile-presets-row">
           {m.timers.map((t) => (
