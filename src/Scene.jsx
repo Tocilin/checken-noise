@@ -1,12 +1,13 @@
 import { useMemo } from "react";
 
 const RAINDROP_COUNT = 36;
+const LEAF_COUNT = 14;
 
 /**
  * Static composition image, with lightweight animated overlays reacting
- * to a few key sounds (rain, campfire, thunder). See git history for the
- * previous fully layered/reactive version (tree/cloud repeats, owl eyes,
- * etc.) to restore more of that later.
+ * to a few key sounds (rain, campfire, thunder, wind). See git history
+ * for the previous fully layered/reactive version (tree/cloud repeats,
+ * owl eyes, etc.) to restore more of that later.
  */
 export default function Scene({
   sceneLabel,
@@ -16,6 +17,7 @@ export default function Scene({
   rain = 0,
   campfire = false,
   thunder = 0,
+  wind = false,
 }) {
   const raindrops = useMemo(
     () =>
@@ -27,15 +29,46 @@ export default function Scene({
     []
   );
 
+  const leaves = useMemo(
+    () =>
+      Array.from({ length: LEAF_COUNT }, () => ({
+        top: Math.random() * 100,
+        delay: Math.random() * 5,
+        duration: 3.5 + Math.random() * 3,
+      })),
+    []
+  );
+
   return (
     <div className="scene">
-      <img className="scene-static-img" src="/scene/composition.png" alt="" aria-hidden="true" />
+      <img
+        className={`scene-static-img${wind ? " wind-sway" : ""}`}
+        src="/scene/composition.png"
+        alt=""
+        aria-hidden="true"
+      />
 
       {campfire && (
         <div className="scene-campfire" aria-hidden="true">
           <span className="flame flame-main" />
           <span className="flame flame-side flame-left" />
           <span className="flame flame-side flame-right" />
+        </div>
+      )}
+
+      {wind && (
+        <div className="scene-wind" aria-hidden="true">
+          {leaves.map((l, i) => (
+            <span
+              key={i}
+              className="leaf"
+              style={{
+                top: `${l.top}%`,
+                animationDelay: `${l.delay}s`,
+                animationDuration: `${l.duration}s`,
+              }}
+            />
+          ))}
         </div>
       )}
 
@@ -57,7 +90,7 @@ export default function Scene({
 
       {thunder > 0 && (
         <>
-          <div className="scene-dark" style={{ opacity: thunder * 0.55 }} aria-hidden="true" />
+          <div className="scene-dark" style={{ opacity: thunder * 0.28 }} aria-hidden="true" />
           <div className="scene-flash" aria-hidden="true" />
         </>
       )}

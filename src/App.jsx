@@ -39,6 +39,7 @@ export default function App() {
             rain={m.layers.rain}
             campfire={m.layers.campfire}
             thunder={m.layers.thunder}
+            wind={m.layers.wind}
             showOverlays
           />
         </div>
@@ -82,6 +83,7 @@ export default function App() {
             rain={m.layers.rain}
             campfire={m.layers.campfire}
             thunder={m.layers.thunder}
+            wind={m.layers.wind}
             showOverlays={false}
           />
         </div>
