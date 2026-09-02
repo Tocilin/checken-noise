@@ -37,6 +37,8 @@ export default function App() {
             chips={m.chips}
             timerNote={m.timerNote}
             rain={m.layers.rain}
+            campfire={m.layers.campfire}
+            thunder={m.layers.thunder}
             showOverlays
           />
         </div>
@@ -78,6 +80,8 @@ export default function App() {
             chips={m.chips}
             timerNote={m.timerNote}
             rain={m.layers.rain}
+            campfire={m.layers.campfire}
+            thunder={m.layers.thunder}
             showOverlays={false}
           />
         </div>
