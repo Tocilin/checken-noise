@@ -299,6 +299,20 @@ button {
   height: 100%;
 }
 
+.scene-layer-clouds {
+  animation: clouds-drift 55s ease-in-out infinite;
+}
+
+@keyframes clouds-drift {
+  0%,
+  100% {
+    transform: translateX(-2%);
+  }
+  50% {
+    transform: translateX(2%);
+  }
+}
+
 .scene-layer-trees.wind-sway {
   animation: scene-sway 3.4s ease-in-out infinite;
   transform-origin: 50% 100%;

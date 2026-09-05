@@ -43,6 +43,7 @@ export default function Scene({
   return (
     <div className="scene">
       <div className="scene-canvas">
+        <img className="scene-layer scene-layer-clouds" src="/scene/clouds.png" alt="" aria-hidden="true" />
         <img className="scene-layer" src="/scene/ground.png" alt="" aria-hidden="true" />
         <img
           className={`scene-layer scene-layer-trees${wind ? " wind-sway" : ""}`}
